@@ -2,76 +2,81 @@
 #include <iostream>
 
 
-Matrix* Create(size_t rows, size_t cols)
+Matrix::Matrix()
 {
-	Matrix* result = new Matrix;
-	result->data = new int* [rows];
+
+}
+
+Matrix::Matrix(int value)
+	: DEF_ROW(value)
+{
+
+}
+
+Matrix::Matrix(size_t rows)
+	: Matrix(rows, DEF_COL)
+{}
+
+Matrix::Matrix(size_t rows, size_t cols)
+	: _cols(cols), _rows(rows)
+{
+	_data = new int* [rows];
 	for (size_t i = 0; i < rows; i++)
 	{
-		result->data[i] = new int[cols] {};
+		_data[i] = new int[cols] {};
 	}
-	result->cols = cols;
-	result->rows = rows;
-	return result;
 }
 
-void Delete(Matrix* matrix)
+Matrix::~Matrix()
 {
-	if (matrix == nullptr)
-		return;
-	if (matrix->data == nullptr)
-		return;
-
-	for (size_t i = 0; i < matrix->rows; i++)
+	for (size_t i = 0; i < _rows; i++)
 	{
-		delete[] matrix->data[i];
+		delete[] _data[i];
 	}
-	delete[] matrix->data;
-	matrix->data = nullptr;
-	matrix->cols = 0;
-	matrix->rows = 0;
+	delete[] _data;
 }
 
-void Init(Matrix* matrix)
+size_t Matrix::GetCols()
 {
-	if (matrix == nullptr)
-		return;
-	if (matrix->data == nullptr)
-		return;
+	return _cols;
+}
 
-	for (size_t i = 0; i < matrix->rows; i++)
+
+void Matrix::SetCols(size_t value)
+{
+	_cols = value;
+}
+
+void Matrix::Init()
+{
+	for (size_t i = 0; i < _rows; i++)
 	{
-		for (size_t j = 0; j < matrix->cols; j++)
+		for (size_t j = 0; j < _cols; j++)
 		{
-			matrix->data[i][j] = rand() % 21;
+			_data[i][j] = rand() % 21;
 		}
 	}
 }
 
-void Print(Matrix* matrix)
+void Matrix::Print()
 {
-	if (matrix == nullptr)
-		return;
-	if (matrix->data == nullptr)
-		return;
-
-	for (size_t i = 0; i < matrix->rows; i++)
+	for (size_t i = 0; i < _rows; i++)
 	{
-		for (size_t j = 0; j < matrix->cols; j++)
+		for (size_t j = 0; j < _cols; j++)
 		{
-			std::cout << matrix->data[i][j] << '\t';
+			std::cout << _data[i][j] << '\t';
 		}
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
 }
 
-void PushFrontRow(Matrix* matrix)
+void Matrix::PushFrontRow()
 {
 
 }
 
-void PushBackRow(Matrix* matrix)
+void Matrix::PushBackRow()
 {
 
 }

@@ -5,17 +5,14 @@ int main()
 {
 	srand(time(0));
 
-	Matrix* matrix = Create(3,3);
-	Matrix* matrix2 = Create(5, 5);
+	Matrix obj2;
+	Matrix obj1(3, 3);
+	// (конструктор за замовчуванням)
+	obj1.GetCols();
+	obj1.SetCols(10);
 
-	Init(matrix);
-	Print(matrix);
-	Delete(matrix);
-
-	Init(matrix2);
-	Print(matrix2);
-	Delete(matrix2);
-	
+	obj1.Init();
+	obj1.Print();
 
 	return 0;
 }
