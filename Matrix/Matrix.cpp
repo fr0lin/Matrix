@@ -1,20 +1,8 @@
 #include "Matrix.h"
 #include <iostream>
 
-
 Matrix::Matrix()
-{
-
-}
-
-Matrix::Matrix(int value)
-	: DEF_ROW(value)
-{
-
-}
-
-Matrix::Matrix(size_t rows)
-	: Matrix(rows, DEF_COL)
+	: Matrix(3, 3)
 {}
 
 Matrix::Matrix(size_t rows, size_t cols)
@@ -25,6 +13,7 @@ Matrix::Matrix(size_t rows, size_t cols)
 	{
 		_data[i] = new int[cols] {};
 	}
+	std::cout << "Matrix Ctor\n";
 }
 
 Matrix::~Matrix()
@@ -34,6 +23,7 @@ Matrix::~Matrix()
 		delete[] _data[i];
 	}
 	delete[] _data;
+	std::cout << "Matrix Dctor\n";
 }
 
 size_t Matrix::GetCols()
@@ -44,7 +34,7 @@ size_t Matrix::GetCols()
 
 void Matrix::SetCols(size_t value)
 {
-	_cols = value;
+	// _cols = value;
 }
 
 void Matrix::Init()

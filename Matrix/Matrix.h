@@ -3,15 +3,12 @@
 class Matrix
 {
 private:
-	const int DEF_ROW = 3;
-	const int DEF_COL = 3;
 	int** _data = nullptr;
-	size_t _cols = 0;
-	size_t _rows = 0;
+	size_t _cols;
+	size_t _rows;
 public:
 	Matrix();
-	Matrix(int value);
-	Matrix(size_t rows);
+	Matrix(const char* title);
 	Matrix(size_t rows, size_t cols);
 	~Matrix();
 	size_t GetCols();
